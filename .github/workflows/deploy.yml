@@ -94,7 +94,8 @@ jobs:
           echo "📦 Updating code..."
           git clean -fd
           git reset --hard HEAD
-          git pull origin main
+          git fetch origin main
+          git reset --hard origin/main
           
           # === DEPENDENCY INSTALLATION ===
           echo "📦 Installing dependencies with optimizations..."
