@@ -3,8 +3,6 @@ name: Deploy to AWS
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   deploy:
@@ -24,8 +22,8 @@ jobs:
     - name: Deploy to AWS
       uses: appleboy/ssh-action@master
       with:
-        host: ec2-34-238-24-134.compute-1.amazonaws.com
-        username: ubuntu
+        host: ${{ secrets.EC2_HOSTNAME }}
+        username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           # === COMPREHENSIVE CLEANUP AND DISK SPACE MANAGEMENT ===
